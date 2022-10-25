@@ -10,7 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class FactorialController {
 
     @GetMapping(value = "{n}")
-    public String getFactorial(@PathVariable (required = false)String n){
-        return n;
+    public int getFactorial(@PathVariable (required = false)int  n){
+        int factorial = 1;
+        if (n < 0) {
+            factorial = 0;
+        } else {
+            for (int i = 0; i < n; i++) {
+                factorial *= (i + 1);
+            }
+        }
+        return factorial;
     }
 }
